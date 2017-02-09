@@ -1,0 +1,135 @@
+﻿/**************************************************************************/
+.AutoSuggest
+{
+    position:absolute;
+    /*display:none;*/
+    background:#DAA520;
+    border:1px solid #999;
+    padding:5px 10px;
+    box-shadow:3px 3px 6px rgba(0,0,0,0.5);
+}
+
+.AutoSuggest em
+{
+    color:#FF00FF;
+    /*font-style:normal;*/
+}
+
+
+.AutoSuggest h2
+{
+    font-size:1em;
+    margin:0;
+    padding:0;
+}
+.AutoSuggest ul
+{
+    padding:0;
+}
+.AutoSuggest ul li
+{
+    list-style:none;
+    padding:0 5px;
+    margin:0;
+    overflow:hidden;
+    cursor:default;
+}
+.AutoSuggest ul li:hover
+{
+    background:#e0e0e0;
+}
+.AutoSuggest ul li .Thumb
+{
+    float:left;
+    display:block;
+    width:40px;
+    height:30px;
+    margin:0 10px 0 0;
+}
+.AutoSuggest ul li .Thumb img
+{
+    display:block;
+    margin:auto;
+    max-height:100%;
+    max-width:100%;
+}
+.AutoSuggest ul li .DisplayName
+{
+    display:block;
+    float:left;
+    margin:0 10px 0 0;
+}
+.AutoSuggest ul li .ResultCount
+{
+    float:right;
+    color:#0000cc;
+}
+
+/***************************************************************************/
+
+.ClothesSearch
+{
+    overflow:hidden;
+}
+.ClothesSearch #FilterList
+{
+    width:250px;
+    float:left;
+    padding:10px 0;
+}
+.ClothesSearch #FilterList select
+{
+    width:100%;
+    margin-bottom:10px;
+}
+.ClothesSearch .ArticleList
+{
+    margin-left:270px;
+    padding:0 10px;
+}
+
+.ArticleList > ul
+{
+    padding:0 20px;
+    list-style-type:none;
+}
+.ArticleList > ul > li
+{
+    padding:10px 0;
+    border-top:1px solid #ccc;
+}
+.ArticleList > ul > li .Header,
+.ArticleList > ul > li .Content
+{
+    overflow:hidden;
+}
+.ArticleList > ul > li .Header
+{
+    margin-bottom:5px;
+}
+.ArticleList > ul > li .BrandName,
+.ArticleList > ul > li .Thumb
+{
+    display:block;
+    width:90px;
+    margin:0 10px 0 0;
+    float:left;
+}
+.ArticleList > ul > li .Thumb
+{
+    height:90px;
+    border:1px solid #ccc;
+}
+.ArticleList > ul > li .Thumb > img
+{
+    max-height:80px;
+    max-width:80px;
+    display:block;
+    margin:auto;
+}
+
+.Price
+{
+    color:Red;
+    }
+

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ClothesSearch.Services.DTOs.AutoSuggestItemDto>
+
+<div class="AutoSuggest">
+@if (Model.Any(x => x.Type == ClothesSearch.Services.DTOs.AutoSuggestItemTypes.Category))
+{
+    <h2>Kategorien >></h2>
+    <ul>
+    @foreach(var item in Model.Where(x => x.Type == ClothesSearch.Services.DTOs.AutoSuggestItemTypes.Category))
+    {
+        <li>
+        <span class="DisplayName">@Html.Raw(item.DisplayName)</span>
+        <span class="ResultCount">@item.RowCount</span>
+        </li>
+    }
+    </ul> 
+}
+
+@if (Model.Any(x => x.Type == ClothesSearch.Services.DTOs.AutoSuggestItemTypes.Brand))
+{
+    <h2>Marken >></h2>
+    <ul>
+    @foreach(var item in Model.Where(x => x.Type == ClothesSearch.Services.DTOs.AutoSuggestItemTypes.Brand))
+    {
+        <li>
+        <span class="DisplayName">@Html.Raw(item.DisplayName)</span>
+        <span class="ResultCount">@item.RowCount</span>
+        </li>
+    }
+    </ul> 
+}
+</div>

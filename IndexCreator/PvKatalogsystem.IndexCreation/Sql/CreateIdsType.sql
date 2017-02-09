@@ -1,0 +1,4 @@
+﻿CREATE TYPE IdsType AS TABLE
+(
+	[Id] BIGINT NOT NULL
+)

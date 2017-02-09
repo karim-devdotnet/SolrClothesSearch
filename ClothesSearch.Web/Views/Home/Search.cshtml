@@ -1,0 +1,11 @@
+﻿@model ClothesSearch.Services.DTOs.SearchDto
+
+<form method="get" action="/Home" id="formSearch">
+    <fieldset>
+        @*<legend>Suche</legend>*@
+        @Html.TextBoxFor(x => x.Query, new { autocomplete = "off", spellcheck = "false", onkeyup = "execAutoSuggest('" + @Url.Content("~/AutoSuggest") + "');" })
+        <button type="submit">>> Suchen</button>
+    </fieldset>
+</form>
+
+<div class="Result">@Html.Partial("ClotheSearchResult", Model)</div>

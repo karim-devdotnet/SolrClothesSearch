@@ -1,0 +1,108 @@
+﻿@using ClothesSearch.Web.Helpers
+
+@model ClothesSearch.Services.DTOs.SearchDto
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //        $("#attributValueFilter").dropdownchecklist({ maxDropHeight: 300, icon: {}, width: 210 });
+
+        var valuelist = new Array();
+        var valueString = document.getElementById('attributValue').value;
+        valuelist = valueString.split(',');
+        if (valueString != "") {
+            $("#attributValueFilter").val(valuelist);
+        }
+    });
+    </script>
+<h1>Suchergebnisse</h1>
+<div class="ClothesSearch">
+
+    <form action="/Home" method="get" id="FilterList">
+    <fieldset>
+    <legend>Filter</legend>
+    @Html.HiddenFor(x => x.Query)
+    @Html.Label("Kategorien")
+    @Html.DropDownList("categoryFilter",
+    Html.SelectList(Model.Filters.CategorieFilters.Where(x => x.RowCount > 0),
+                    x => string.Format("{0} ({1})", x.DisplayName, x.RowCount),
+                    x => x.FilterQuery,
+                    x => x.IsActive,
+                    true))
+    @Html.Label("Marken")
+    @Html.DropDownList("brandFilter",
+    Html.SelectList(Model.Filters.MarkeFilters.Where(x => x.RowCount > 0),
+                    x => string.Format("{0} ({1})", x.DisplayName, x.RowCount),
+                    x => x.FilterQuery,
+                    x => x.IsActive,
+                    true))
+
+    @*Attributes*@
+    @Html.Label("attributValueFilter","Attribute")
+            <br />
+            <select multiple="multiple" id="attributValueFilter" >
+            @{                
+                foreach (var name in Model.Filters.Attributes)
+              {
+                  var displayname=string.Format("{0}",name.DisplayName);
+                 <optgroup label="@displayname">
+                 
+                 @{
+                  if (name.AttributeValues != null)
+                  {
+                     foreach(var value in name.AttributeValues)
+                     {
+                         <option value="@value.FilterQuery">@string.Format("{0} ({1})",value.DisplayName,value.RowCount)</option>
+                     }
+                 }
+                 }
+                 </optgroup> 
+               
+              }
+             }
+            
+            </select>   
+                 
+
+            @Html.Hidden("attributValue")
+
+    <button type="submit" onclick="aFunction(this)">filtern >></button>    
+    </fieldset>
+    </form>
+
+    <div class="ArticleList">
+    <p align="right">@Model.Articles.Count Artikel gefunden</p>
+
+    <ul>
+    @foreach (var item in Model.Articles)
+    {
+        <li>
+            <div class="Header">
+                
+                
+                <table class="tab1" width="100%" border="0">
+                        <tr>
+                        <td>
+                            <table><tr>
+                                <td>
+                                <span class="BrandName"><b>@item.Marke</b></span>
+                                </td><td>
+                                <span class="ArticleNumber">@item.Artikelnummer</span> 
+                                </td>
+                            </tr></table>
+                        </td>                                                            
+                        <td width="30%" align="right">
+                        <span class="Price"><b>@string.Format("{0} {1}", item.Verkaufspreis.ToString(), item.Preiseinheit)</b></span>
+                        </td>
+                        </tr>
+                    </table>
+            </div>
+            <div class="Content">
+            <span class="Thumb"><img class="VerticalMiddle" src="../../Content/images/NoImage.png" /></span>
+            <h3 class="name">@string.Format("{0}-{1}", item.Marke, item.Kategorie)</h3>
+            <i><span class="description">@string.Join(" | ",item.Attribut)</span></i>
+            </div>
+        </li> 
+    }
+    </ul>
+    </div>
+</div> 
